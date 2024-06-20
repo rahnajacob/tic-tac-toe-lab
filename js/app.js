@@ -30,8 +30,11 @@ let tie;
 
 /*------------------------ Cached Element References ------------------------*/
 const squareEls = document.querySelectorAll(".board .sqr")
+
 const messageEl = document.getElementById("message")
+
 const resetBtnEl = document.getElementById("reset")
+
 
 init()
 /*-------------------------------- Functions --------------------------------*/
@@ -55,7 +58,6 @@ function render() {
 function updateBoard() {
     board.forEach((square, i) => {
         squareEls[i]
-        console.log(board)
         if (board[i] === "X") {
             squareEls[i].style.backgroundColor = "pink"
         } else if (board[i] === "O") {
@@ -85,6 +87,7 @@ function handleClick(e) {
     if (winner === true) {
         return
     }
+    console.log(e, "winning combos")
     placePiece()
     checkForWinner()
     checkForTie()
@@ -107,19 +110,18 @@ function checkForWinner() {
     })
 }
 
-
 function checkForTie() {
     if (winner === true) {
         return
-    } else if (board.forEach((square) => {
+    } else {(board.forEach((square) => {
         if (square === "") {
-            tie === false
+            tie = false
         } else {
             tie === true
         }
-    }
-    ))
-}
+    }))
+    
+}}
 
 
 function switchPlayerTurn() {
@@ -138,7 +140,16 @@ function switchPlayerTurn() {
 
 
 
-
+//if (winner === true) {
+//     return
+// } else if (board.forEach((square) => {
+//     if (square === "") {
+//         tie === false
+//     } else {
+//         tie === true
+//     }
+// }
+// ))
 
 // function checkForWinner(){
 //     for (let i = 0; i < winningCombos.length; i++) {
